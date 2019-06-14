@@ -1,5 +1,5 @@
 //
-//  UnitDemoTests.swift
+//  MainViewControllerTests.swift
 //  UnitDemoTests
 //
 //  Created by RTC-HN154 on 6/14/19.
@@ -8,8 +8,7 @@
 
 import XCTest
 @testable import UnitDemo
-
-class UnitDemoTests: XCTestCase {
+class MainViewControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -20,17 +19,28 @@ class UnitDemoTests: XCTestCase {
         super.tearDown()
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    func testGetUser() {
-        // Arrage
-        var service = UserService()
+    
+    func testUserServiceNotNil() {
+        // Arrange
+        var controller = MainViewController()
         
         // Act
-        var users = service.getUser()
+        controller.viewDidLoad()
         
         // Assert
-        XCTAssertTrue(users.count == 2, "User count incorrect!")
+        XCTAssertNotNil(controller.userService, "User service is nil")
     }
-    
+    func testUserCount() {
+        // Arrange
+        var controller = MainViewController()
+        
+        // Act
+        controller.viewDidLoad()
+        var userCount = controller.users.count
+        
+        // Assert
+        XCTAssertTrue(userCount == 2, "User count is in correct!")
+    }
 
     func testExample() {
         // This is an example of a functional test case.
